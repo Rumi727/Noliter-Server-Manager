@@ -1,0 +1,5 @@
+name: NoliterManager
+version: '${project.version}'
+main: com.teambucket.noliter.manager.nolitermanager.Main
+api-version: 1.18
+depend: [ProtocolLib]
