@@ -1,4 +1,4 @@
-package com.teambucket.noliter.manager.nolitermanager;
+package com.teambucket.kurumi.noliterservermanager;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -6,18 +6,14 @@ import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketEvent;
-import com.comphenix.protocol.reflect.StructureModifier;
-import de.tr7zw.nbtapi.NBTTileEntity;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import java.util.concurrent.PriorityBlockingQueue;
-import java.util.concurrent.TimeUnit;
+import java.util.Objects;
 import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin
@@ -54,30 +50,43 @@ public final class Main extends JavaPlugin
                 {
                     Player player = event.getPlayer();
                     Block block = player.getTargetBlock(5);
+                    if (block == null)
+                        return;
+
                     Location pos = block.getLocation();
                     String name = block.getType().name();
 
                     if (Security.GetCommandAuto(block))
                     {
-                        if (name == "COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 명령 블록을 수정 했습니다");
-                        else if (name == "CHAIN_COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 연쇄형 명령 블록을 수정 했습니다");
-                        else if (name == "REPEATING_COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 반복형 명령 블록을 수정 했습니다");
+                        switch (name) {
+                            case "COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 명령 블록을 수정 했습니다");
+                                break;
+                            case "CHAIN_COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 연쇄형 명령 블록을 수정 했습니다");
+                                break;
+                            case "REPEATING_COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 반복형 명령 블록을 수정 했습니다");
+                                break;
+                        }
                     }
                     else
                     {
-                        if (name == "COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 명령 블록을 수정 했습니다");
-                        else if (name == "CHAIN_COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 연쇄형 명령 블록을 수정 했습니다");
-                        else if (name == "REPEATING_COMMAND_BLOCK")
-                            Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 반복형 명령 블록을 수정 했습니다");
+                        switch (name) {
+                            case "COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 명령 블록을 수정 했습니다");
+                                break;
+                            case "CHAIN_COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 연쇄형 명령 블록을 수정 했습니다");
+                                break;
+                            case "REPEATING_COMMAND_BLOCK":
+                                Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 반복형 명령 블록을 수정 했습니다");
+                                break;
+                        }
                     }
 
                     String command = Security.GetCommand(block);
-                    if (command != "")
+                    if (!Objects.equals(command, ""))
                         Main.debug.info("입력된 커맨드: " + command);
                     else
                         Main.debug.info("입력된 커맨드가 없습니다");

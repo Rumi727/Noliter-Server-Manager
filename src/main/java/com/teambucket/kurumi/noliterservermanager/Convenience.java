@@ -1,6 +1,5 @@
-package com.teambucket.noliter.manager.nolitermanager;
+package com.teambucket.kurumi.noliterservermanager;
 
-import de.tr7zw.nbtapi.NBTTileEntity;
 import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
 import org.bukkit.block.Block;
@@ -8,10 +7,8 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerMoveEvent;
-import org.bukkit.metadata.MetadataValue;
-import org.bukkit.plugin.Plugin;
-import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
+
+import java.util.Objects;
 
 public class Convenience implements Listener
 {
@@ -29,7 +26,7 @@ public class Convenience implements Listener
         if (player.getGameMode() == GameMode.CREATIVE)
         {
             String command = Security.GetCommand(block);
-            if (command != "")
+            if (!Objects.equals(command, ""))
                 player.sendActionBar(Component.text(command));
         }
     }
