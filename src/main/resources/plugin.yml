@@ -1,4 +1,4 @@
-name: Noliter Server Manager
+name: Noliter-Server-Manager
 version: '${project.version}'
 main: com.teambucket.kurumi.noliterservermanager.Main
 api-version: 1.18
