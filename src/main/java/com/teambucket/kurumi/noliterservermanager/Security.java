@@ -69,13 +69,16 @@ public class Security implements Listener
             }
         }
 
-        String command = GetCommand(block);
-        if (!Objects.equals(command, ""))
-            Main.debug.info("입력된 커맨드: " + command);
-        else
-            Main.debug.info("입력된 커맨드가 없습니다");
+        if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
+        {
+            String command = GetCommand(block);
+            if (!Objects.equals(command, ""))
+                Main.debug.info("입력된 커맨드: " + command);
+            else
+                Main.debug.info("입력된 커맨드가 없습니다");
 
-        Convenience.ActionBarCommand(player, block);
+            Convenience.ActionBarCommand(player, block);
+        }
     }
 
     @EventHandler
@@ -169,7 +172,8 @@ public class Security implements Listener
                 }
             }
 
-            Main.debug.info("입력된 커맨드: " + command);
+            if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
+                Main.debug.info("입력된 커맨드: " + command);
         }
     }
 
