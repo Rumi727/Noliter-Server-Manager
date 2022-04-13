@@ -36,144 +36,47 @@ public class Security implements Listener
     public void OnPlaceEvent(BlockPlaceEvent event)
     {
         Block block = event.getBlock();
-        Location pos = block.getLocation();
-        String name = block.getType().name();
+        String blockName = block.getType().name();
         Player player = event.getPlayer();
 
-        if (GetCommandAuto(block))
-        {
-            switch (name) {
-                case "COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 명령 블록을 설치 했습니다");
-                    break;
-                case "CHAIN_COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 연쇄형 명령 블록을 설치 했습니다");
-                    break;
-                case "REPEATING_COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 항상 활성화된 반복형 명령 블록을 설치 했습니다");
-                    break;
-            }
-        }
-        else
-        {
-            switch (name) {
-                case "COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 명령 블록을 설치 했습니다");
-                    break;
-                case "CHAIN_COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 연쇄형 명령 블록을 설치 했습니다");
-                    break;
-                case "REPEATING_COMMAND_BLOCK":
-                    Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 반복형 명령 블록을 설치 했습니다");
-                    break;
-            }
-        }
-
-        if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
-        {
-            String command = GetCommand(block);
-            if (!Objects.equals(command, ""))
-                Main.debug.info("입력된 커맨드: " + command);
-            else
-                Main.debug.info("입력된 커맨드가 없습니다");
-
-            Convenience.ActionBarCommand(player, block);
-        }
+        if (blockName.equals("COMMAND_BLOCK") || blockName.equals("CHAIN_COMMAND_BLOCK") || blockName.equals("REPEATING_COMMAND_BLOCK"))
+            CommandMergeLog(player, block, "설치");
     }
 
     @EventHandler
     public void OnBreakEvent(BlockBreakEvent event)
     {
         Block block = event.getBlock();
-        Location pos = block.getLocation();
-        String name = block.getType().name();
+        String blockName = block.getType().name();
         Player player = event.getPlayer();
 
-        if (player.getInventory().getItemInMainHand().getType().name().equals("WOODEN_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("STONE_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("GOLDEN_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("IRON_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("DIAMOND_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("NETHERITE_SWORD"))
-            return;
-        else if (player.getInventory().getItemInMainHand().getType().name().equals("DEBUG_STICK"))
-            return;
-
-        String command = GetCommand(block);
-        if (!Objects.equals(command, ""))
+        if (blockName.equals("COMMAND_BLOCK") || blockName.equals("CHAIN_COMMAND_BLOCK") || blockName.equals("REPEATING_COMMAND_BLOCK"))
         {
-            player.sendMessage("비어있지 않은 명령 블록을 손으로 파괴 할 수 없습니다");
-            event.setCancelled(true);
+            String playerSelectedItemName = player.getInventory().getItemInMainHand().getType().name();
+            if (playerSelectedItemName.equals("WOODEN_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("STONE_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("GOLDEN_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("IRON_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("DIAMOND_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("NETHERITE_SWORD"))
+                return;
+            else if (playerSelectedItemName.equals("DEBUG_STICK"))
+                return;
 
-            if (GetCommandAuto(block))
-            {
-                switch (name) {
-                    case "COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 명령 블록을 파괴하려 했습니다");
-                        break;
-                    case "CHAIN_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 연쇄형 명령 블록을 파괴하려 했습니다");
-                        break;
-                    case "REPEATING_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 반복형 명령 블록을 파괴하려 했습니다");
-                        break;
-                }
+            String command = GetCommand(block);
+            if (!Objects.equals(command, "")) {
+                player.sendMessage("비어있지 않은 명령 블록을 손으로 파괴 할 수 없습니다");
+                event.setCancelled(true);
+
+                CommandMergeLog(player, block, "파괴하려");
             }
             else
-            {
-                switch (name) {
-                    case "COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 명령 블록을 파괴하려 했습니다");
-                        break;
-                    case "CHAIN_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 연쇄형 명령 블록을 파괴하려 했습니다");
-                        break;
-                    case "REPEATING_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 반복형 명령 블록을 파괴하려 했습니다");
-                        break;
-                }
-            }
-
-            Main.debug.info("입력된 커맨드가 없습니다");
-        }
-        else
-        {
-            if (GetCommandAuto(block))
-            {
-                switch (name) {
-                    case "COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 명령 블록을 파괴 했습니다");
-                        break;
-                    case "CHAIN_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 연쇄형 명령 블록을 파괴 했습니다");
-                        break;
-                    case "REPEATING_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 항상 활성화된 반복형 명령 블록을 파괴 했습니다");
-                        break;
-                }
-            }
-            else
-            {
-                switch (name) {
-                    case "COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 명령 블록을 파괴 했습니다");
-                        break;
-                    case "CHAIN_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 연쇄형 명령 블록을 파괴 했습니다");
-                        break;
-                    case "REPEATING_COMMAND_BLOCK":
-                        Main.debug.info(player.getName() + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 있는 반복형 명령 블록을 파괴 했습니다");
-                        break;
-                }
-            }
-
-            if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
-                Main.debug.info("입력된 커맨드: " + command);
+                CommandMergeLog(player, block, "파괴");
         }
     }
 
@@ -204,6 +107,61 @@ public class Security implements Listener
 
             event.setCancelled(true);
         }
+    }
+
+    public static void OnCommandMerge(Player player)
+    {
+        Block block = player.getTargetBlock(5);
+        if (block == null)
+            return;
+
+        CommandMergeLog(player, block, "수정");
+        Convenience.ActionBarCommand(player, block);
+    }
+
+    public static void CommandMergeLog(Player player, Block block, String text)
+    {
+        String playerName = player.getName();
+        String blockName = block.getType().name();
+        Location pos = block.getLocation();
+
+        String temp = "";
+        if (Security.GetCommandAuto(block))
+        {
+            switch (blockName) {
+                case "COMMAND_BLOCK":
+                    temp = "항상 활성화된 명령 블록";
+                    break;
+                case "CHAIN_COMMAND_BLOCK":
+                    temp = "항상 활성화된 연쇄형 명령 블록";
+                    break;
+                case "REPEATING_COMMAND_BLOCK":
+                    temp = "항상 활성화된 반복형 명령 블록";
+                    break;
+            }
+        }
+        else
+        {
+            switch (blockName) {
+                case "COMMAND_BLOCK":
+                    temp = "명령 블록";
+                    break;
+                case "CHAIN_COMMAND_BLOCK":
+                    temp = "연쇄형 명령 블록";
+                    break;
+                case "REPEATING_COMMAND_BLOCK":
+                    temp = "반복형 명령 블록";
+                    break;
+            }
+        }
+
+        Main.debug.info(playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + temp + "을 " + text + " 했습니다");
+
+        String command = Security.GetCommand(block);
+        if (!Objects.equals(command, ""))
+            Main.debug.info("입력된 커맨드: " + command);
+        else
+            Main.debug.info("입력된 커맨드가 없습니다");
     }
 
     public static String GetCommand(Block block)
