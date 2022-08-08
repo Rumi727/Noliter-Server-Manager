@@ -1,21 +1,15 @@
 package com.teambucket.kurumi.noliterservermanager;
 
-import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.events.PacketContainer;
 import de.tr7zw.nbtapi.NBTTileEntity;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
-import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-import java.lang.reflect.InvocationTargetException;
-import java.util.Collection;
 import java.util.Objects;
 
 public class Security implements Listener
