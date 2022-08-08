@@ -9,6 +9,7 @@ import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
@@ -18,6 +19,7 @@ import java.util.logging.Logger;
 
 public final class Main extends JavaPlugin
 {
+    public static Plugin plugin;
     public static Server server;
     public static Logger debug;
     public static ProtocolManager packetManager;
@@ -28,6 +30,7 @@ public final class Main extends JavaPlugin
     @Override
     public void onEnable()
     {
+        plugin = this;
         server = getServer();
         debug = server.getLogger();
 
