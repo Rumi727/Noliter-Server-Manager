@@ -21,6 +21,34 @@ public class Convenience implements Listener
         ActionBarCommand(player, block);
     }
 
+    @EventHandler
+    public void OnEntityDamageEvent(EntityDamageEvent event)
+    {
+        if (event.getDamage() <= 0 && event.getCause() == EntityDamageEvent.DamageCause.MAGIC)
+        {
+            Entity damageEntity = event.getEntity();
+
+            PacketContainer damageEffect = new PacketContainer(PacketType.Play.Server.ENTITY_STATUS);
+            damageEffect.getIntegers().write(0, damageEntity.getEntityId());
+            damageEffect.getBytes().write(0, (byte) 2);
+
+            @SuppressWarnings("unchecked")
+            Collection<Player> players = (Collection<Player>) Main.server.getOnlinePlayers();
+            for (Player player : players)
+            {
+                try
+                {
+                    Main.packetManager.sendServerPacket(player, damageEffect);
+                }
+                catch (InvocationTargetException e)
+                {
+                    e.printStackTrace();
+                }
+            }
+
+            event.setCancelled(true);
+        }
+    }
     public static void ActionBarCommand(Player player, Block block)
     {
         if (player.getGameMode() == GameMode.CREATIVE)
