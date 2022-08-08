@@ -51,7 +51,7 @@
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-commons:9.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-tree:9.2" level="project" />
     <orderEntry type="library" scope="PROVIDED" name="Maven: org.ow2.asm:asm-analysis:9.2" level="project" />
-    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api-plugin:2.6.0" level="project" />
+    <orderEntry type="library" name="Maven: de.tr7zw:item-nbt-api-plugin:2.10.0" level="project" />
     <orderEntry type="library" name="Maven: com.comphenix.protocol:ProtocolLib:4.8.0" level="project" />
     <orderEntry type="library" name="Maven: net.bytebuddy:byte-buddy:1.12.8" level="project" />
   </component>
