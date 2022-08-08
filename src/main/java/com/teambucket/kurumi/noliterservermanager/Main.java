@@ -55,10 +55,7 @@ public final class Main extends JavaPlugin
                     e.printStackTrace();
                 }
 
-                Bukkit.getScheduler().runTask(plugin, () ->
-                {
-                    Security.OnCommandMerge(event.getPlayer());
-                });
+                Bukkit.getScheduler().runTask(plugin, () -> Security.OnCommandMerge(event.getPlayer()));
             }
         });
 
