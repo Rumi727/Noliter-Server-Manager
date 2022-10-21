@@ -88,6 +88,7 @@ public class Security implements Listener
     {
         String playerName = player.getName();
         String blockName = block.getType().name();
+        String worldName = player.getWorld().getName();
         Location pos = block.getLocation();
 
         String temp = "";
@@ -120,7 +121,7 @@ public class Security implements Listener
             }
         }
 
-        Main.debug.info(playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + temp + "을 " + text + " 했습니다");
+        Main.debug.info(playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + worldName + " 월드에서 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + temp + "을 " + text + " 했습니다");
 
         String command = Security.GetCommand(block);
         if (!Objects.equals(command, ""))
