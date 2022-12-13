@@ -23,7 +23,7 @@ public class Security implements Listener
         double y = position.getY();
         double z = position.getZ();
 
-        Main.debug.info("[" + player.getWorld().getName() + "] " + x + ", " + y + ", " + z);
+        Debug.LogNoTitle("[" + player.getWorld().getName() + "] " + x + ", " + y + ", " + z);
     }
 
     @EventHandler
@@ -91,18 +91,18 @@ public class Security implements Listener
         String worldName = player.getWorld().getName();
         Location pos = block.getLocation();
 
-        String temp = "";
+        String commandBlockText = "";
         if (Security.GetCommandAuto(block))
         {
             switch (blockName) {
                 case "COMMAND_BLOCK":
-                    temp = "항상 활성화된 명령 블록";
+                    commandBlockText = "항상 활성화된 명령 블록";
                     break;
                 case "CHAIN_COMMAND_BLOCK":
-                    temp = "항상 활성화된 연쇄형 명령 블록";
+                    commandBlockText = "항상 활성화된 연쇄형 명령 블록";
                     break;
                 case "REPEATING_COMMAND_BLOCK":
-                    temp = "항상 활성화된 반복형 명령 블록";
+                    commandBlockText = "항상 활성화된 반복형 명령 블록";
                     break;
             }
         }
@@ -110,24 +110,25 @@ public class Security implements Listener
         {
             switch (blockName) {
                 case "COMMAND_BLOCK":
-                    temp = "명령 블록";
+                    commandBlockText = "명령 블록";
                     break;
                 case "CHAIN_COMMAND_BLOCK":
-                    temp = "연쇄형 명령 블록";
+                    commandBlockText = "연쇄형 명령 블록";
                     break;
                 case "REPEATING_COMMAND_BLOCK":
-                    temp = "반복형 명령 블록";
+                    commandBlockText = "반복형 명령 블록";
                     break;
             }
         }
 
-        Main.debug.info(playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + worldName + " 월드에서 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + temp + "을 " + text + " 했습니다");
-
+        String outText = playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + worldName + " 월드에서 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + commandBlockText + "을 " + text + " 했습니다";
         String command = Security.GetCommand(block);
         if (!Objects.equals(command, ""))
-            Main.debug.info("입력된 커맨드: " + command);
+            outText += "\n입력된 커맨드: " + command;
         else
-            Main.debug.info("입력된 커맨드가 없습니다");
+            outText += "\n입력된 커맨드가 없습니다";
+
+        Debug.Log(outText);
     }
 
     public static String GetCommand(Block block)
