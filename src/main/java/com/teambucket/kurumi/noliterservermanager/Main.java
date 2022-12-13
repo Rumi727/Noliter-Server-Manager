@@ -42,6 +42,10 @@ public final class Main extends JavaPlugin
 
 
 
+        Debug.Log("Noliter Server Manager Enabled");
+
+
+
         packetManager.addPacketListener(new PacketAdapter(this, ListenerPriority.NORMAL, PacketType.Play.Client.SET_COMMAND_BLOCK)
         {
             @Override
@@ -66,6 +70,6 @@ public final class Main extends JavaPlugin
     @Override
     public void onDisable()
     {
-        debug.info("Noliter Manager Disabled");
+        Debug.Log("Noliter Server Manager Disabled");
     }
 }
