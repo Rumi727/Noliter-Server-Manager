@@ -47,20 +47,16 @@ public class Security implements Listener
         if (blockName.equals("COMMAND_BLOCK") || blockName.equals("CHAIN_COMMAND_BLOCK") || blockName.equals("REPEATING_COMMAND_BLOCK"))
         {
             String playerSelectedItemName = player.getInventory().getItemInMainHand().getType().name();
-            if (playerSelectedItemName.equals("WOODEN_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("STONE_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("GOLDEN_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("IRON_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("DIAMOND_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("NETHERITE_SWORD"))
-                return;
-            else if (playerSelectedItemName.equals("DEBUG_STICK"))
-                return;
+            switch (playerSelectedItemName) {
+                case "WOODEN_SWORD":
+                case "STONE_SWORD":
+                case "GOLDEN_SWORD":
+                case "IRON_SWORD":
+                case "DIAMOND_SWORD":
+                case "NETHERITE_SWORD":
+                case "DEBUG_STICK":
+                    return;
+            }
 
             String command = GetCommand(block);
             if (!Objects.equals(command, "")) {
