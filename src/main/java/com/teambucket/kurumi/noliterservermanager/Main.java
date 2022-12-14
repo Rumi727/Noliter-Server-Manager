@@ -55,11 +55,14 @@ public final class Main extends JavaPlugin
                     e.printStackTrace();
                 }
 
-                Bukkit.getScheduler().runTask(plugin, () -> Security.OnCommandMerge(event.getPlayer()));
+                Bukkit.getScheduler().runTask(plugin, () -> SecurityCommandBlock.OnCommandMerge(event.getPlayer()));
             }
         });
 
-        server.getPluginManager().registerEvents(new Security(), this);
+        server.getPluginManager().registerEvents(new SecurityCommandBlock(), this);
+        server.getPluginManager().registerEvents(new SecurityExplode(), this);
+        server.getPluginManager().registerEvents(new SecurityLog(), this);
+
         server.getPluginManager().registerEvents(new Convenience(), this);
     }
 }

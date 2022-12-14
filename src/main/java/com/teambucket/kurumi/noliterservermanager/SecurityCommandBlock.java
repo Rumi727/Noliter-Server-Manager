@@ -7,27 +7,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
-import org.bukkit.event.entity.EntityExplodeEvent;
-import org.bukkit.event.player.PlayerQuitEvent;
 
 import java.util.Objects;
 
-public class Security implements Listener
+public class SecurityCommandBlock implements Listener
 {
-    @EventHandler
-    public void OnPlayerQuit(PlayerQuitEvent event)
-    {
-        Player player = event.getPlayer();
-        Location position = player.getLocation();
-        double x = position.getX();
-        double y = position.getY();
-        double z = position.getZ();
-
-        Debug.LogNoTitle("[" + player.getWorld().getName() + "] " + x + ", " + y + ", " + z);
-    }
-
+    //region Event
     @EventHandler
     public void OnPlaceEvent(BlockPlaceEvent event)
     {
@@ -72,20 +58,6 @@ public class Security implements Listener
         }
     }
 
-    //폭발 방지
-    @EventHandler
-    public void OnBlockExplode(BlockExplodeEvent event)
-    {
-        event.blockList().clear();
-    }
-
-    //폭발 방지
-    @EventHandler
-    public void OnEntityExplode(EntityExplodeEvent event)
-    {
-        event.blockList().clear();
-    }
-
     public static void OnCommandMerge(Player player)
     {
         Block block = player.getTargetBlock(5);
@@ -95,7 +67,9 @@ public class Security implements Listener
         CommandMergeLog(player, block, "수정");
         Convenience.ActionBarCommand(player, block);
     }
+    //endregion
 
+    //region Log
     public static void CommandMergeLog(Player player, Block block, String text)
     {
         String playerName = player.getName();
@@ -104,7 +78,7 @@ public class Security implements Listener
         Location pos = block.getLocation();
 
         String commandBlockText = "";
-        if (Security.GetCommandAuto(block))
+        if (GetCommandAuto(block))
         {
             switch (blockName) {
                 case "COMMAND_BLOCK":
@@ -134,7 +108,7 @@ public class Security implements Listener
         }
 
         String outText = playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + worldName + " 월드에서 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + commandBlockText + "을 " + text + " 했습니다";
-        String command = Security.GetCommand(block);
+        String command = GetCommand(block);
         if (!Objects.equals(command, ""))
             outText += "\n입력된 커맨드: " + command;
         else
@@ -142,7 +116,9 @@ public class Security implements Listener
 
         Debug.Log(outText);
     }
+    //endregion
 
+    //region Convenience
     public static String GetCommand(Block block)
     {
         String name = block.getType().name();
@@ -168,4 +144,5 @@ public class Security implements Listener
 
         return false;
     }
+    //endregion
 }

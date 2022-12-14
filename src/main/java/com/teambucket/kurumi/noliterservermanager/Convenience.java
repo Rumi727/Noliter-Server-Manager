@@ -152,7 +152,7 @@ public class Convenience implements Listener
     {
         if (player.getGameMode() == GameMode.CREATIVE)
         {
-            String command = Security.GetCommand(block);
+            String command = SecurityCommandBlock.GetCommand(block);
             if (!Objects.equals(command, ""))
                 player.sendActionBar(Component.text(command));
         }
