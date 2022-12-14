@@ -9,6 +9,7 @@ import com.comphenix.protocol.events.PacketEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
+import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scoreboard.Scoreboard;
@@ -26,6 +27,8 @@ public final class Main extends JavaPlugin
     public static ScoreboardManager scoreboardManager;
     public static Scoreboard newScoreboard;
     public static List<World> worlds;
+
+    public static final String commandLabel = "noliter";
 
     @Override
     public void onEnable()
@@ -59,10 +62,18 @@ public final class Main extends JavaPlugin
             }
         });
 
+        //region Event
         server.getPluginManager().registerEvents(new SecurityCommandBlock(), this);
         server.getPluginManager().registerEvents(new SecurityExplode(), this);
         server.getPluginManager().registerEvents(new SecurityLog(), this);
 
         server.getPluginManager().registerEvents(new Convenience(), this);
+        //endregion
+
+        //region Command
+        PluginCommand label = getCommand(commandLabel);
+        if (label != null)
+            label.setExecutor(new CommandManager());
+        //endregion
     }
 }

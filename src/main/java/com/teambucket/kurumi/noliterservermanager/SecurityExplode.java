@@ -7,15 +7,19 @@ import org.bukkit.event.entity.EntityExplodeEvent;
 
 public class SecurityExplode implements Listener
 {
+    public static boolean allowBlockExplode = false;
+
     @EventHandler
     public void OnBlockExplode(BlockExplodeEvent event)
     {
-        event.blockList().clear();
+        if (!allowBlockExplode)
+            event.blockList().clear();
     }
 
     @EventHandler
     public void OnEntityExplode(EntityExplodeEvent event)
     {
-        event.blockList().clear();
+        if (!allowBlockExplode)
+            event.blockList().clear();
     }
 }

@@ -3,3 +3,7 @@ version: '${project.version}'
 main: com.teambucket.kurumi.noliterservermanager.Main
 api-version: 1.18
 depend: [ProtocolLib]
+
+commands:
+  noliter:
+    description: 노리터 커맨드
