@@ -21,13 +21,20 @@ public class CommandManager implements CommandExecutor, TabExecutor
             return false;
         }
 
+        boolean isConsole = sender instanceof ConsoleCommandSender;
         String arg0 = args[0];
         if (label.equals(Main.commandLabel))
         {
             if (arg0.equals(securityLabel))
             {
-                if (allowOpSecurityCommand || sender instanceof ConsoleCommandSender)
+                if (allowOpSecurityCommand || isConsole)
                 {
+                    if (!isConsole && !sender.isOp())
+                    {
+                        CommandMessage.FailSendMessage(sender,  CommandMessage.noPermission);
+                        return false;
+                    }
+
                     if (args.length >= 2)
                     {
                         String arg1 = args[1];

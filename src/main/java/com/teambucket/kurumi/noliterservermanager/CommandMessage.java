@@ -14,6 +14,8 @@ public final class CommandMessage
     public static final String unknownCommand = "알 수 없는 명령어입니다 도움말을 보려면 \"/help\"를 입력하세요";
     public static final String unknownArgument = "명령어에 잘못된 인수가 있습니다";
 
+    public static final String noPermission = "이 명령어를 사용할 권한이 없습니다";
+
     public static String InvalidBool(String value)
     {
         return "잘못된 불입니다, 'true' 또는 'false'가 필요하지만 '%s'이(가) 입력되었습니다".replace("%s", value);
