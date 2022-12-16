@@ -5,14 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>kr.kro.teambucket.kurumi.plugin.noliterservermanager</groupId>
-    <artifactId>Noliter Server Manager</artifactId>
+    <artifactId>NoliterServerManager</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
 
     <name>Noliter Server Manager</name>
 
     <properties>
-        <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
