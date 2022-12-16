@@ -1,4 +1,4 @@
-package com.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.noliterservermanager;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,6 +1,6 @@
 name: Noliter-Server-Manager
 version: '${project.version}'
-main: com.teambucket.kurumi.noliterservermanager.Main
+main: kr.kro.teambucket.kurumi.noliterservermanager.Main
 api-version: 1.18
 depend: [ProtocolLib]
 

@@ -1,4 +1,4 @@
-package com.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.noliterservermanager;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.events.PacketContainer;

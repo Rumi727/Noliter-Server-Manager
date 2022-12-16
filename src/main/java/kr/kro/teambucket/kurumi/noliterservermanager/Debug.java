@@ -1,4 +1,4 @@
-package com.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.noliterservermanager;
 
 public class Debug
 {

@@ -1,4 +1,4 @@
-package com.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.noliterservermanager;
 
 import de.tr7zw.nbtapi.NBTTileEntity;
 import org.bukkit.Location;
