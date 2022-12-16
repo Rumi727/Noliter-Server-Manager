@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
 
 import org.bukkit.Location;
 import org.bukkit.entity.Player;

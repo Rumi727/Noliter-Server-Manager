@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
 
 import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
