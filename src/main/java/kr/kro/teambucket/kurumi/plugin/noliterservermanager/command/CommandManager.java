@@ -1,5 +1,7 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager.command;
 
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.ExplodeEvent;
 import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
@@ -7,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CommandManager implements CommandExecutor, TabExecutor
+public final class CommandManager implements CommandExecutor, TabExecutor
 {
     public static boolean allowOpSecurityCommand = false;
     public static final String securityLabel = "security";
@@ -47,14 +49,14 @@ public class CommandManager implements CommandExecutor, TabExecutor
                                 String arg2 = args[2];
                                 if (arg2.equals("true"))
                                 {
-                                    SecurityExplode.allowBlockExplode = true;
+                                    ExplodeEvent.allowBlockExplode = true;
                                     CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(securityLabel, "allowBlockExplode", arg2), true, false);
 
                                     return true;
                                 }
                                 else if (arg2.equals("false"))
                                 {
-                                    SecurityExplode.allowBlockExplode = false;
+                                    ExplodeEvent.allowBlockExplode = false;
                                     CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(securityLabel, "allowBlockExplode", arg2), true, false);
 
                                     return true;
@@ -67,7 +69,7 @@ public class CommandManager implements CommandExecutor, TabExecutor
                             }
                             else
                             {
-                                CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(securityLabel, "allowBlockExplode", ((Boolean)SecurityExplode.allowBlockExplode).toString()), false, true);
+                                CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(securityLabel, "allowBlockExplode", ((Boolean) ExplodeEvent.allowBlockExplode).toString()), false, true);
                                 return true;
                             }
                         }

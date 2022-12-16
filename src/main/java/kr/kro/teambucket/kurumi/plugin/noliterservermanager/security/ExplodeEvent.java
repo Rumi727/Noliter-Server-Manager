@@ -1,11 +1,11 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockExplodeEvent;
 import org.bukkit.event.entity.EntityExplodeEvent;
 
-public class SecurityExplode implements Listener
+public final class ExplodeEvent implements Listener
 {
     public static boolean allowBlockExplode = false;
 

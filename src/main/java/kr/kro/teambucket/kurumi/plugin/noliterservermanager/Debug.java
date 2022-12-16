@@ -1,6 +1,6 @@
 package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
 
-public class Debug
+public final class Debug
 {
     public static void Log(String message) { Main.debug.info("[Noliter Server Manager] " + message); }
 

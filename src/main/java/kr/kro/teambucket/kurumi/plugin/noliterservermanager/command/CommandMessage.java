@@ -1,5 +1,6 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager.command;
 
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.block.BlockState;
@@ -70,9 +71,8 @@ public final class CommandMessage
 
             sender.sendMessage(message);
         }
-        else if (sender instanceof Player)
+        else if (sender instanceof Player senderPlayer)
         {
-            Player senderPlayer = (Player)sender;
             World world = senderPlayer.getWorld();
             ConsoleSendMessage(message2, senderPlayer.getWorld(), force);
 

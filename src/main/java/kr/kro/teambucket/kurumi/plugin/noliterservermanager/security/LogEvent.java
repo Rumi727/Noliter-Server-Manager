@@ -1,12 +1,13 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
 
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Debug;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
 
-public class SecurityLog implements Listener
+public final class LogEvent implements Listener
 {
     @EventHandler
     public void OnPlayerQuit(PlayerQuitEvent event)

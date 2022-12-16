@@ -1,6 +1,8 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
 
 import de.tr7zw.nbtapi.NBTTileEntity;
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Debug;
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.CommandActionBarEvent;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
@@ -11,7 +13,7 @@ import org.bukkit.event.block.BlockPlaceEvent;
 
 import java.util.Objects;
 
-public class SecurityCommandBlock implements Listener
+public final class CommandBlockEvent implements Listener
 {
     //region Event
     @EventHandler
@@ -35,15 +37,12 @@ public class SecurityCommandBlock implements Listener
         if (blockName.equals("COMMAND_BLOCK") || blockName.equals("CHAIN_COMMAND_BLOCK") || blockName.equals("REPEATING_COMMAND_BLOCK"))
         {
             String playerSelectedItemName = player.getInventory().getItemInMainHand().getType().name();
-            switch (playerSelectedItemName) {
-                case "WOODEN_SWORD":
-                case "STONE_SWORD":
-                case "GOLDEN_SWORD":
-                case "IRON_SWORD":
-                case "DIAMOND_SWORD":
-                case "NETHERITE_SWORD":
-                case "DEBUG_STICK":
+            switch (playerSelectedItemName)
+            {
+                case "WOODEN_SWORD", "STONE_SWORD", "GOLDEN_SWORD", "IRON_SWORD", "DIAMOND_SWORD", "NETHERITE_SWORD", "DEBUG_STICK" ->
+                {
                     return;
+                }
             }
 
             String command = GetCommand(block);
@@ -60,12 +59,10 @@ public class SecurityCommandBlock implements Listener
 
     public static void OnCommandMerge(Player player)
     {
-        Block block = player.getTargetBlock(5);
-        if (block == null)
-            return;
+        Block block = player.getTargetBlock(null, 5);
 
         CommandMergeLog(player, block, "수정");
-        Convenience.ActionBarCommand(player, block);
+        CommandActionBarEvent.ActionBarCommand(player, block);
     }
     //endregion
 
@@ -80,31 +77,22 @@ public class SecurityCommandBlock implements Listener
         String commandBlockText = "";
         if (GetCommandAuto(block))
         {
-            switch (blockName) {
-                case "COMMAND_BLOCK":
-                    commandBlockText = "항상 활성화된 명령 블록";
-                    break;
-                case "CHAIN_COMMAND_BLOCK":
-                    commandBlockText = "항상 활성화된 연쇄형 명령 블록";
-                    break;
-                case "REPEATING_COMMAND_BLOCK":
-                    commandBlockText = "항상 활성화된 반복형 명령 블록";
-                    break;
+            switch (blockName)
+            {
+                case "COMMAND_BLOCK" -> commandBlockText = "항상 활성화된 명령 블록";
+                case "CHAIN_COMMAND_BLOCK" -> commandBlockText = "항상 활성화된 연쇄형 명령 블록";
+                case "REPEATING_COMMAND_BLOCK" -> commandBlockText = "항상 활성화된 반복형 명령 블록";
             }
         }
         else
         {
-            switch (blockName) {
-                case "COMMAND_BLOCK":
-                    commandBlockText = "명령 블록";
-                    break;
-                case "CHAIN_COMMAND_BLOCK":
-                    commandBlockText = "연쇄형 명령 블록";
-                    break;
-                case "REPEATING_COMMAND_BLOCK":
-                    commandBlockText = "반복형 명령 블록";
-                    break;
-            }
+            commandBlockText = switch (blockName)
+                    {
+                        case "COMMAND_BLOCK" -> "명령 블록";
+                        case "CHAIN_COMMAND_BLOCK" -> "연쇄형 명령 블록";
+                        case "REPEATING_COMMAND_BLOCK" -> "반복형 명령 블록";
+                        default -> commandBlockText;
+                    };
         }
 
         String outText = playerName + "(" + player.getUniqueId() + ")" + "(이)가 " + worldName + " 월드에서 " + pos.getX() + ", " + pos.getY() + ", " + pos.getZ() + " 좌표에 " + commandBlockText + "을 " + text + " 했습니다";
