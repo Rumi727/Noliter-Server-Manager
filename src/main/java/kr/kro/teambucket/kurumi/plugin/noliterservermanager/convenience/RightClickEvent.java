@@ -1,6 +1,5 @@
 package kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Debug;
 import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
 import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
