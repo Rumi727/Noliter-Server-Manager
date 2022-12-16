@@ -15,6 +15,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
 import java.util.List;
@@ -27,6 +28,7 @@ public final class Main extends JavaPlugin
     public static Logger debug;
     public static ProtocolManager packetManager;
     public static ScoreboardManager scoreboardManager;
+    public static Scoreboard mainScoreboard;
     public static PluginManager pluginManager;
     public static List<World> worlds;
 
@@ -42,6 +44,7 @@ public final class Main extends JavaPlugin
         packetManager = ProtocolLibrary.getProtocolManager();
 
         scoreboardManager = Bukkit.getScoreboardManager();
+        mainScoreboard = scoreboardManager.getMainScoreboard();
 
         pluginManager = server.getPluginManager();
 

@@ -19,7 +19,7 @@ public final class FireChargeThrowEvent implements Listener
         Action action = event.getAction();
         ItemStack itemStack = event.getItem();
 
-        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)
+        if (action.isRightClick())
         {
             if (itemStack != null && itemStack.getType() == Material.FIRE_CHARGE)
             {

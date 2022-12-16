@@ -16,6 +16,9 @@ public final class EventManager
         //endregion
 
         //region Convenience
+        pluginManager.registerEvents(new LeftClickEvent(), plugin);
+        pluginManager.registerEvents(new RightClickEvent(), plugin);
+
         pluginManager.registerEvents(new CommandActionBarEvent(), plugin);
         pluginManager.registerEvents(new EntityDamageEffectEvent(), plugin);
         pluginManager.registerEvents(new FireChargeThrowEvent(), plugin);

@@ -27,7 +27,7 @@ public final class SlimeBallThrowEvent implements Listener
         World world = player.getWorld();
         ItemStack itemStack = event.getItem();
 
-        if (action == Action.RIGHT_CLICK_AIR || action == Action.RIGHT_CLICK_BLOCK)
+        if (action.isRightClick())
         {
             if (itemStack != null && itemStack.getType() == Material.SLIME_BALL)
             {
