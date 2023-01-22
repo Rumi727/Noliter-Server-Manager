@@ -77,7 +77,7 @@ public final class NoteBlockDelayEvent implements Listener
                         player.playNote(location, instrument, note);
                     }
                 }
-            }.runTaskLater(Main.plugin, 1);
+            }.runTaskLater(Main.plugin, 0);
         }
     }
 }
