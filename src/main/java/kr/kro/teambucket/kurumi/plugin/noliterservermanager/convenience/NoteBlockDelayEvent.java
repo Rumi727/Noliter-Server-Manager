@@ -50,8 +50,30 @@ public final class NoteBlockDelayEvent implements Listener
                     Collection<Player> players = (Collection<Player>) Main.server.getOnlinePlayers();
                     for (Player player : players)
                     {
-                        //noinspection deprecation
-                        player.spawnParticle(Particle.NOTE,location.getX() + 0.5, location.getY() + 1, location.getZ() + 0.5, 0, note.getId() / 24d, 0, 0, 1);
+                        Note.Tone tone = note.getTone();
+                        int id = 0;
+                        if (tone == Note.Tone.G)
+                            id = 1;
+                        else if (tone == Note.Tone.A)
+                            id = 3;
+                        else if (tone == Note.Tone.B)
+                            id = 5;
+                        else if (tone == Note.Tone.C)
+                            id = 6;
+                        else if (tone == Note.Tone.D)
+                            id = 8;
+                        else if (tone == Note.Tone.E)
+                            id = 10;
+                        else if (tone == Note.Tone.F)
+                            id = 11;
+
+                        if (note.isSharped())
+                            id++;
+
+                        id %= Note.Tone.TONES_COUNT;
+                        id += note.getOctave() * Note.Tone.TONES_COUNT;
+
+                        player.spawnParticle(Particle.NOTE,location.getX() + 0.5, location.getY() + 1, location.getZ() + 0.5, 0, id / (Note.Tone.TONES_COUNT * 2d), 0, 0, 1);
                         player.playNote(location, instrument, note);
                     }
                 }
