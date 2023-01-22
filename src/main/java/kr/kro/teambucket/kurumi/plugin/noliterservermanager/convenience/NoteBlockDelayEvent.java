@@ -73,7 +73,7 @@ public final class NoteBlockDelayEvent implements Listener
                         id %= Note.Tone.TONES_COUNT;
                         id += note.getOctave() * Note.Tone.TONES_COUNT;
 
-                        player.spawnParticle(Particle.NOTE,location.getX() + 0.5, location.getY() + 1, location.getZ() + 0.5, 0, id / (Note.Tone.TONES_COUNT * 2d), 0, 0, 1);
+                        player.spawnParticle(Particle.NOTE,location.getX() + 0.5, location.getY() + 1.2, location.getZ() + 0.5, 0, id / (Note.Tone.TONES_COUNT * 2d), 0, 0, 1);
                         player.playNote(location, instrument, note);
                     }
                 }
