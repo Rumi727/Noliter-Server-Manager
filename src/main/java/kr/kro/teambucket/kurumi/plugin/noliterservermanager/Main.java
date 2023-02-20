@@ -15,6 +15,7 @@ import org.bukkit.command.PluginCommand;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;
 
@@ -30,6 +31,7 @@ public final class Main extends JavaPlugin
     public static ScoreboardManager scoreboardManager;
     public static Scoreboard mainScoreboard;
     public static PluginManager pluginManager;
+    public static BukkitScheduler scheduler;
     public static List<World> worlds;
 
     public static final String commandLabel = "noliter";
@@ -49,6 +51,8 @@ public final class Main extends JavaPlugin
         pluginManager = server.getPluginManager();
 
         worlds = Bukkit.getWorlds();
+
+        scheduler = Bukkit.getScheduler();
 
 
 

@@ -1,6 +1,7 @@
 package kr.kro.teambucket.kurumi.plugin.noliterservermanager.command;
 
 import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
+import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
 import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.ExplodeEvent;
 import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
@@ -13,6 +14,7 @@ public final class CommandManager implements CommandExecutor, TabExecutor
 {
     public static boolean allowOpSecurityCommand = false;
     public static final String securityLabel = "security";
+    public static final String convenienceLabel = "convenience";
 
     @Override
     public boolean onCommand(@NotNull CommandSender sender, @NotNull Command command, @NotNull String label, String[] args)
@@ -69,7 +71,7 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                             }
                             else
                             {
-                                CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(securityLabel, "allowBlockExplode", ((Boolean) ExplodeEvent.allowBlockExplode).toString()), false, true);
+                                CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(securityLabel, "allowBlockExplode", ((Boolean)ExplodeEvent.allowBlockExplode).toString()), false, true);
                                 return true;
                             }
                         }
@@ -115,6 +117,80 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                     return false;
                 }
             }
+            else if (arg0.equals(convenienceLabel))
+            {
+                if (args.length >= 2)
+                {
+                    String arg1 = args[1];
+
+                    //region disablePlayerInvulnerableTime
+                    if (arg1.equals("disablePlayerInvulnerableTime"))
+                    {
+                        if (args.length >= 3)
+                        {
+                            String arg2 = args[2];
+                            if (arg2.equals("true"))
+                            {
+                                DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime = true;
+                                CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disablePlayerInvulnerableTime", arg2), true, false);
+
+                                return true;
+                            }
+                            else if (arg2.equals("false"))
+                            {
+                                DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime = false;
+                                CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disablePlayerInvulnerableTime", arg2), true, false);
+
+                                return true;
+                            }
+                            else
+                            {
+                                CommandMessage.FailSendMessage(sender, CommandMessage.InvalidBool(arg2));
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disablePlayerInvulnerableTime", ((Boolean)DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime).toString()), false, true);
+                            return true;
+                        }
+                    }
+                    //endregion
+                    //region disableMobInvulnerableTime
+                    else if (arg1.equals("disableMobInvulnerableTime"))
+                    {
+                        if (args.length >= 3)
+                        {
+                            String arg2 = args[2];
+                            if (arg2.equals("true"))
+                            {
+                                DisableInvulnerableTimeEvent.disableMobInvulnerableTime = true;
+                                CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disableMobInvulnerableTime", arg2), true, false);
+
+                                return true;
+                            }
+                            else if (arg2.equals("false"))
+                            {
+                                DisableInvulnerableTimeEvent.disableMobInvulnerableTime = false;
+                                CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disableMobInvulnerableTime", arg2), true, false);
+
+                                return true;
+                            }
+                            else
+                            {
+                                CommandMessage.FailSendMessage(sender, CommandMessage.InvalidBool(arg2));
+                                return false;
+                            }
+                        }
+                        else
+                        {
+                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disableMobInvulnerableTime", ((Boolean)DisableInvulnerableTimeEvent.disableMobInvulnerableTime).toString()), false, true);
+                            return true;
+                        }
+                    }
+                    //endregion
+                }
+            }
 
             CommandMessage.FailSendMessage(sender, CommandMessage.unknownArgument);
         }
@@ -129,6 +205,7 @@ public final class CommandManager implements CommandExecutor, TabExecutor
         if (args.length >= 1)
         {
             list.add(securityLabel);
+            list.add(convenienceLabel);
 
             if (label.equals(Main.commandLabel) && args.length >= 2)
             {
@@ -141,6 +218,25 @@ public final class CommandManager implements CommandExecutor, TabExecutor
 
                     String arg1 = args[1];
                     if (arg1.equals("allowBlockExplode") || arg1.equals("allowOpSecurityCommand"))
+                    {
+                        list.clear();
+
+                        if (args.length == 3)
+                        {
+                            list.add("true");
+                            list.add("false");
+                        }
+                    }
+                    else if (args.length >= 3)
+                        list.clear();
+                }
+                else if (args[0].equals(convenienceLabel))
+                {
+                    list.add("disablePlayerInvulnerableTime");
+                    list.add("disableMobInvulnerableTime");
+
+                    String arg1 = args[1];
+                    if (arg1.equals("disablePlayerInvulnerableTime") || arg1.equals("disableMobInvulnerableTime"))
                     {
                         list.clear();
 

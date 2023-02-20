@@ -20,6 +20,7 @@ public final class EventManager
         pluginManager.registerEvents(new RightClickEvent(), plugin);
 
         pluginManager.registerEvents(new CommandActionBarEvent(), plugin);
+        pluginManager.registerEvents(new DisableInvulnerableTimeEvent(), plugin);
         pluginManager.registerEvents(new EntityDamageEffectEvent(), plugin);
         pluginManager.registerEvents(new FireChargeThrowEvent(), plugin);
         pluginManager.registerEvents(new NoteBlockDelayEvent(), plugin);
