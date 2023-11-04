@@ -23,6 +23,7 @@ public final class EventManager
         pluginManager.registerEvents(new DisableInvulnerableTimeEvent(), plugin);
         pluginManager.registerEvents(new EntityDamageEffectEvent(), plugin);
         pluginManager.registerEvents(new FireChargeThrowEvent(), plugin);
+        pluginManager.registerEvents(new ItemFrameProtect(), plugin);
         pluginManager.registerEvents(new NoteBlockDelayEvent(), plugin);
         pluginManager.registerEvents(new SlimeBallThrowEvent(), plugin);
         //endregion
