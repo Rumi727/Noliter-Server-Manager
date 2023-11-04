@@ -11,8 +11,30 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 public final class DisableInvulnerableTimeEvent implements Listener
 {
-    public static boolean disablePlayerInvulnerableTime = false;
-    public static boolean disableMobInvulnerableTime = false;
+    private static boolean disablePlayerInvulnerableTime = false;
+    private static boolean disableMobInvulnerableTime = false;
+
+    public static boolean isDisablePlayerInvulnerableTime() {
+        return disablePlayerInvulnerableTime;
+    }
+
+    public static void setDisablePlayerInvulnerableTime(boolean value) {
+        DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime = value;
+
+        Main.config.set("disablePlayerInvulnerableTime", value);
+        Main.plugin.saveConfig();
+    }
+
+    public static boolean isDisableMobInvulnerableTime() {
+        return disableMobInvulnerableTime;
+    }
+
+    public static void setDisableMobInvulnerableTime(boolean value) {
+        DisableInvulnerableTimeEvent.disableMobInvulnerableTime = value;
+
+        Main.config.set("disableMobInvulnerableTime", value);
+        Main.plugin.saveConfig();
+    }
 
     @EventHandler
     public void OnEntityDamageEvent(EntityDamageEvent event)
@@ -20,9 +42,9 @@ public final class DisableInvulnerableTimeEvent implements Listener
         Entity damageEntity = event.getEntity();
         boolean disableInvulnerableTime;
         if (damageEntity instanceof Player)
-            disableInvulnerableTime = disablePlayerInvulnerableTime;
+            disableInvulnerableTime = isDisablePlayerInvulnerableTime();
         else
-            disableInvulnerableTime = disableMobInvulnerableTime;
+            disableInvulnerableTime = isDisableMobInvulnerableTime();
 
         if (disableInvulnerableTime && damageEntity instanceof LivingEntity livingEntity)
         {

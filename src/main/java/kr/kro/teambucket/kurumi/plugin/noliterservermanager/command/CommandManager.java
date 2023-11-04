@@ -131,14 +131,14 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                             String arg2 = args[2];
                             if (arg2.equals("true"))
                             {
-                                DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime = true;
+                                DisableInvulnerableTimeEvent.setDisablePlayerInvulnerableTime(true);
                                 CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disablePlayerInvulnerableTime", arg2), true, false);
 
                                 return true;
                             }
                             else if (arg2.equals("false"))
                             {
-                                DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime = false;
+                                DisableInvulnerableTimeEvent.setDisablePlayerInvulnerableTime(false);
                                 CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disablePlayerInvulnerableTime", arg2), true, false);
 
                                 return true;
@@ -151,7 +151,7 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                         }
                         else
                         {
-                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disablePlayerInvulnerableTime", ((Boolean)DisableInvulnerableTimeEvent.disablePlayerInvulnerableTime).toString()), false, true);
+                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disablePlayerInvulnerableTime", ((Boolean) DisableInvulnerableTimeEvent.isDisablePlayerInvulnerableTime()).toString()), false, true);
                             return true;
                         }
                     }
@@ -164,14 +164,14 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                             String arg2 = args[2];
                             if (arg2.equals("true"))
                             {
-                                DisableInvulnerableTimeEvent.disableMobInvulnerableTime = true;
+                                DisableInvulnerableTimeEvent.setDisableMobInvulnerableTime(true);
                                 CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disableMobInvulnerableTime", arg2), true, false);
 
                                 return true;
                             }
                             else if (arg2.equals("false"))
                             {
-                                DisableInvulnerableTimeEvent.disableMobInvulnerableTime = false;
+                                DisableInvulnerableTimeEvent.setDisableMobInvulnerableTime(false);
                                 CommandMessage.SucSendMessage(sender, CommandMessage.SetValue(convenienceLabel, "disableMobInvulnerableTime", arg2), true, false);
 
                                 return true;
@@ -184,7 +184,7 @@ public final class CommandManager implements CommandExecutor, TabExecutor
                         }
                         else
                         {
-                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disableMobInvulnerableTime", ((Boolean)DisableInvulnerableTimeEvent.disableMobInvulnerableTime).toString()), false, true);
+                            CommandMessage.SucSendMessage(sender, CommandMessage.GetValue(convenienceLabel, "disableMobInvulnerableTime", ((Boolean) DisableInvulnerableTimeEvent.isDisableMobInvulnerableTime()).toString()), false, true);
                             return true;
                         }
                     }
