@@ -1,6 +1,6 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Debug;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Debug;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

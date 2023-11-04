@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager;
 
 public final class Debug
 {

@@ -1,6 +1,6 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Main;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.LivingEntity;
 import org.bukkit.entity.Player;

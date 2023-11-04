@@ -1,8 +1,8 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.command;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.command;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.ExplodeEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Main;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.ExplodeEvent;
 import org.bukkit.command.*;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;

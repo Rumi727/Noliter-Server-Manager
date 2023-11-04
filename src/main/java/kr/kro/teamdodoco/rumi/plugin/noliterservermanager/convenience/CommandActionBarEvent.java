@@ -1,6 +1,6 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.CommandBlockEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.CommandBlockEvent;
 import net.kyori.adventure.text.Component;
 import org.bukkit.GameMode;
 import org.bukkit.block.Block;

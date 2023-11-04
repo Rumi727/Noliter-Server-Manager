@@ -1,8 +1,8 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security;
 
 import de.tr7zw.nbtapi.NBTTileEntity;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Debug;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.CommandActionBarEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Debug;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.CommandActionBarEvent;
 import org.bukkit.Location;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;

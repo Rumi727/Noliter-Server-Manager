@@ -1,6 +1,6 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.command;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.command;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.Main;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Main;
 import org.bukkit.GameRule;
 import org.bukkit.World;
 import org.bukkit.block.BlockState;

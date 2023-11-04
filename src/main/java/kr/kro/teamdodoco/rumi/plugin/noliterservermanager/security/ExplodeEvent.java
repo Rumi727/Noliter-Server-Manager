@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.security;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -1,7 +1,7 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager;
 
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.*;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.*;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.*;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.*;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 

@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience;
 
 import org.bukkit.GameMode;
 import org.bukkit.Material;

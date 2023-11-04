@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager;
 
 import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
@@ -6,9 +6,9 @@ import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
 import com.comphenix.protocol.events.PacketEvent;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.command.CommandManager;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
-import kr.kro.teambucket.kurumi.plugin.noliterservermanager.security.CommandBlockEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.command.CommandManager;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.CommandBlockEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -17,7 +17,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
-import org.bukkit.scheduler.BukkitRunnable;
 import org.bukkit.scheduler.BukkitScheduler;
 import org.bukkit.scoreboard.Scoreboard;
 import org.bukkit.scoreboard.ScoreboardManager;

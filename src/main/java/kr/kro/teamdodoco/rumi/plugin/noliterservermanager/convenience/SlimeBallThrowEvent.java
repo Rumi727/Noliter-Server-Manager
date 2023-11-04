@@ -1,4 +1,4 @@
-package kr.kro.teambucket.kurumi.plugin.noliterservermanager.convenience;
+package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience;
 
 import net.kyori.adventure.key.Key;
 import net.kyori.adventure.sound.Sound;
