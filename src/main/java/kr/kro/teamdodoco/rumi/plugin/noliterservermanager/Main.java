@@ -1,14 +1,14 @@
 package kr.kro.teamdodoco.rumi.plugin.noliterservermanager;
 
-/*import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.PacketType;
 import com.comphenix.protocol.ProtocolLibrary;
 import com.comphenix.protocol.ProtocolManager;
 import com.comphenix.protocol.events.ListenerPriority;
 import com.comphenix.protocol.events.PacketAdapter;
-import com.comphenix.protocol.events.PacketEvent;*/
+import com.comphenix.protocol.events.PacketEvent;
 import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.command.CommandManager;
 import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.DisableInvulnerableTimeEvent;
-//import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.CommandBlockEvent;
+import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security.CommandBlockEvent;
 import org.bukkit.Bukkit;
 import org.bukkit.Server;
 import org.bukkit.World;
@@ -30,7 +30,7 @@ public final class Main extends JavaPlugin
     public static FileConfiguration config;
     public static Server server;
     public static Logger debug;
-    //public static ProtocolManager packetManager;
+    public static ProtocolManager packetManager;
     public static ScoreboardManager scoreboardManager;
     public static Scoreboard mainScoreboard;
     public static PluginManager pluginManager;
@@ -48,7 +48,7 @@ public final class Main extends JavaPlugin
         server = getServer();
         debug = server.getLogger();
 
-        //packetManager = ProtocolLibrary.getProtocolManager();
+        packetManager = ProtocolLibrary.getProtocolManager();
 
         scoreboardManager = Bukkit.getScoreboardManager();
         mainScoreboard = scoreboardManager.getMainScoreboard();
@@ -61,7 +61,7 @@ public final class Main extends JavaPlugin
 
 
 
-        /*packetManager.addPacketListener(new PacketAdapter(this, ListenerPriority.NORMAL, PacketType.Play.Client.SET_COMMAND_BLOCK)
+        packetManager.addPacketListener(new PacketAdapter(this, ListenerPriority.NORMAL, PacketType.Play.Client.SET_COMMAND_BLOCK)
         {
             @Override
             public void onPacketReceiving(PacketEvent event)
@@ -77,7 +77,7 @@ public final class Main extends JavaPlugin
 
                 scheduler.runTask(plugin, () -> CommandBlockEvent.OnCommandMerge(event.getPlayer()));
             }
-        });*/
+        });
 
         EventManager.Init(this, pluginManager);
 

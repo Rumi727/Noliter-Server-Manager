@@ -1,7 +1,7 @@
 package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience;
 
-/*import com.comphenix.protocol.PacketType;
-import com.comphenix.protocol.events.PacketContainer;*/
+import com.comphenix.protocol.PacketType;
+import com.comphenix.protocol.events.PacketContainer;
 import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Main;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -17,7 +17,7 @@ public final class EntityDamageEffectEvent implements Listener
     @EventHandler
     public void OnEntityDamageEvent(EntityDamageEvent event)
     {
-        /*if (event.getDamage() <= 0 && event.getCause() == EntityDamageEvent.DamageCause.MAGIC)
+        if (event.getDamage() <= 0 && event.getCause() == EntityDamageEvent.DamageCause.MAGIC)
         {
             Entity damageEntity = event.getEntity();
             PacketContainer damageEffect = new PacketContainer(PacketType.Play.Server.ENTITY_STATUS);
@@ -39,6 +39,6 @@ public final class EntityDamageEffectEvent implements Listener
             }
 
             event.setCancelled(true);
-        }*/
+        }
     }
 }
