@@ -1,5 +1,6 @@
 package kr.kro.teamdodoco.rumi.plugin.noliterservermanager.security;
 
+import de.tr7zw.nbtapi.NBT;
 import de.tr7zw.nbtapi.NBTTileEntity;
 import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Debug;
 import kr.kro.teamdodoco.rumi.plugin.noliterservermanager.convenience.CommandActionBarEvent;
@@ -113,8 +114,7 @@ public final class CommandBlockEvent implements Listener
 
         if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
         {
-            NBTTileEntity nbt = new NBTTileEntity(block.getState());
-            return nbt.getString("Command");
+            return NBT.get(block.getState(), nbt -> (String)nbt.getString("Command"));
         }
 
         return "";
@@ -125,10 +125,7 @@ public final class CommandBlockEvent implements Listener
         String name = block.getType().name();
 
         if (name.equals("COMMAND_BLOCK") || name.equals("CHAIN_COMMAND_BLOCK") || name.equals("REPEATING_COMMAND_BLOCK"))
-        {
-            NBTTileEntity nbt = new NBTTileEntity(block.getState());
-            return nbt.getBoolean("auto");
-        }
+            return NBT.get(block.getState(), nbt -> (boolean)nbt.getBoolean("auto"));
 
         return false;
     }

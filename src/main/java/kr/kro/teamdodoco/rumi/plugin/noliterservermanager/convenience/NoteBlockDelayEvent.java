@@ -6,6 +6,7 @@ import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.block.BlockState;
 import org.bukkit.block.Sign;
+import org.bukkit.block.sign.Side;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -31,11 +32,17 @@ public final class NoteBlockDelayEvent implements Listener
 
         BlockState signBlock = world.getBlockAt(location.getBlockX(), location.getBlockY() - 1, location.getBlockZ()).getState();
         if (signBlock instanceof Sign)
-            noDelay = ((Sign)signBlock).line(0).equals(Component.text("no delay"));
+        {
+            Sign sign = (Sign)signBlock;
+            noDelay = sign.getSide(Side.BACK).equals(Component.text("no delay")) || sign.getSide(Side.FRONT).equals(Component.text("no delay"));
+        }
 
         signBlock = world.getBlockAt(location.getBlockX(), location.getBlockY() - 2, location.getBlockZ()).getState();
         if (signBlock instanceof Sign && !noDelay)
-            noDelay = ((Sign)signBlock).line(0).equals(Component.text("no delay"));
+        {
+            Sign sign = (Sign)signBlock;
+            noDelay = sign.getSide(Side.BACK).equals(Component.text("no delay")) || sign.getSide(Side.FRONT).equals(Component.text("no delay"));
+        }
 
         if (!noDelay)
         {
