@@ -2,7 +2,7 @@ name: Noliter-Server-Manager
 version: '${project.version}'
 main: kr.kro.teamdodoco.rumi.plugin.noliterservermanager.Main
 api-version: 1.21
-depend: [ProtocolLib], [NBTAPI]
+depend: [ProtocolLib]
 
 commands:
   noliter:
